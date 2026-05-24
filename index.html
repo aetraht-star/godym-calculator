@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GYM Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { background: #0d1117; color: #fff; font-family: Arial; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .calc { background: #161b22; padding: 20px; border-radius: 15px; width: 300px; }
+        h1 { text-align: center; color: #58a6ff; margin: 0 0 10px 0; }
+        #display { width: 100%; height: 60px; font-size: 30px; text-align: right; margin-bottom: 10px; background: #0d1117; border: none; color: #fff; padding: 10px; box-sizing: border-box; }
+        .buttons { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        button { height: 60px; font-size: 20px; border: none; border-radius: 10px; background: #21262d; color: #fff; }
+        button:active { background: #30363d; }
+        .equals { background: #238636; }
+        .clear { background: #da3633; }
+    </style>
+</head>
+<body>
+    <div class="calc">
+        <h1>GYM</h1>
+        <p style="text-align:center; margin:0 0 15px 0; color:#8b949e">God has You and Me</p>
+        <input type="text" id="display" disabled>
+        <div class="buttons">
+            <button class="clear" onclick="clearDisplay()">C</button>
+            <button onclick="appendToDisplay('/')">/</button>
+            <button onclick="appendToDisplay('*')">*</button>
+            <button onclick="deleteLast()">←</button>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('-')">-</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('+')">+</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button class="equals" onclick="calculate()">=</button>
+            <button onclick="appendToDisplay('0')" style="grid-column: span 2">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+        </div>
+    </div>
+<script>
+    let display = document.getElementById('display');
+    function appendToDisplay(value) { display.value += value; }
+    function clearDisplay() { display.value = ''; }
+    function deleteLast() { display.value = display.value.slice(0, -1); }
+    function calculate() { try { display.value = eval(display.value); } catch { display.value = 'Error'; } }
+</script>
+</body>
+</html>
